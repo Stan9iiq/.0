@@ -1,0 +1,63 @@
+# Larisa Dolina refused to change her name to Otper ((((((.
+#
+# class CaesarCipher():
+#
+#     def __init__(self, otc):
+#         alf = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+#         self.encdict = dict(zip(alf[otc: ] + alf[:otc], alf))
+#         self.decdict = dict(zip(alf, alf[otc: ] + alf[:otc]))
+#
+#     def encode(self, str):
+#         return ''.join(self.encdict.get(i, i) for i in str.upper())
+#
+#     def decode(self, str):
+#         return ''.join(self.decdict.get(i, i) for i in str.upper())
+#
+# c = CaesarCipher(5)
+# print(c.decode("ABOBA"))
+# print(c.encode("FGTGF"))
+
+
+
+# Each loaf of bread is a tragic story of grains that could have become beer, but did not
+#
+# class Vector:
+#
+#     def __init__(self, init_el):
+#         self.el = list(init_el)
+#
+#     def sum(self, othr):
+#         r = list(self.el)
+#         for ind, itm in enumerate(othr.el, 0):
+#             r[ind] += itm
+#         return r
+#
+#     def sub(self, othr):
+#         r = list(self.el)
+#         for ind, itm in enumerate(othr.el, 0):
+#             r[ind] -= itm
+#         return r
+#
+#     def mul(self, othr):
+#         runsum = 0
+#         for ind, itm in enumerate(othr.el, 0):
+#             runsum += itm * self.el[ind]
+#         return runsum
+#
+#     def len(self):
+#         r = list(self.el)
+#         runsum = 0
+#         for itm in r:
+#             runsum += itm ** 2
+#         len = round(runsum ** (1 / 2), 2)
+#         return (len)
+#
+# def test():
+#     a = Vector([1, 2, 3])
+#     b = Vector([3, 4, 5])
+#     print(a.sum(b))
+#     print(a.sub(b))
+#     print(a.mul(b))
+#     print(a.len())
+#
+# test()
