@@ -59,5 +59,34 @@
 #     print(a.sub(b))
 #     print(a.mul(b))
 #     print(a.len())
+
+
+
+
+class Cont:
+  def __init__(self, key, item):
+    self.item = item
+    key = {"eat": ["apple", "banana"], "clothes": ["maika", "tshorts"], "canc": ["pen", "stink"]}
+
+  def __next__(self):
+    self.item += 1
+    return iter(self.fr)
+
+class Fr(Cont):
+  def __init__(self, key, item):
+    self.item = item
+    self.fr = Fr(self, key, item)
+
+  def __getitem__(self, item):
+    return self.item[item]
+
+  def __setitem__(self, key, key[0]):
+    if not key == "eat":
+      raise TypeError("Bad index")
+    self.item[key] = key[0]
+
+  def __iter__(Cont["eat"]):
+    self.item = 0
+    return self
 #
 # test()
