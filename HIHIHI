@@ -90,3 +90,50 @@ class Fr(Cont):
     return self
 #
 # test()
+
+
+
+
+
+
+
+class Person:
+
+  gs = 40000
+
+  def __init__(self, name, phone, salary = None):
+    self.name = name
+    self.phone = phone
+    self.salary = salary
+
+  def setsalary(self, salary):
+    if isinstance(p, Manager) == True:
+      self.salary = gs * 1
+      return self.salary
+    else:
+      self.salary = gs * 1.2
+      return self.salary
+
+  def getsalary(self, salary):
+    return self.salary
+
+
+class Manager(Person):
+  def __init__(self, name, phone, salary):
+      print("New Manager")
+      super().__init__(name, phone)
+      self.salary = salary.setsalary
+
+
+class Programmer(Person):
+    def __init__(self, name, phone, salary):
+      print("New Programmer")
+      super().__init__(name, phone)
+      self.salary = salary.setsalary
+
+
+
+p = Manager("Nikita", "+781252", 40000)
+print(p.__dict__)
+p = Programmer("Tikita", "+78005553535", 40000)
+print(p.__dict__)
