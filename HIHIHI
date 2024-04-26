@@ -94,14 +94,30 @@ class Fr(Cont):
 
 
 
-class Person:
+
+
+import random
+
+
+
+class MixingLog:
+  ID = 0
+  
+  def __init__(self):
+    MixinLog.ID = random.randrange(99999, 1000000)
+    self.id = MixinLog.ID
+
+
+
+class Person():
 
   def __init__(self, name, phone, salary = None):
+    super().__init__()
     self.name = name
     self.phone = phone
     self.salary = salary
 
-  def setsalary(self, salary):
+  def _setsalary(self, salary):
     if isinstance(p, Manager) == True:
       self.salary = salary * 1
       return self.salary
@@ -109,19 +125,27 @@ class Person:
       self.salary = salary * 1.2
       return self.salary
 
-  def getsalary(self, salary):
+  def _getsalary(self, salary):
     return self.salary
 
+  def go_holli(self):
+    if isinstance(p, Manager) == True:
+      self.holliday = "30 days"
+    else:
+      self.holliday = "1 day"
 
-class Manager(Person):
+
+
+class Manager(Person, MixingLog):
 
   def __init__(self, name, phone, salary):
       print("New Manager")
       super().__init__(name, phone)
       self.salary = salary
+      
 
 
-class Programmer(Person):
+class Programmer(Person, MixingLog):
   
     def __init__(self, name, phone, salary):
       print("New Programmer")
@@ -130,9 +154,14 @@ class Programmer(Person):
 
 
 
-p = Manager("Nikita", "+781252", 0)
-p.setsalary(40000)
+
+
+
+p = Manager("Nikita", "+781252", 40000)
+p._setsalary(40000)
+p.go_holli
 print(p.__dict__)
-p = Programmer("Tikita", "+78005553535", 0)
-p.setsalary(40000)
+p = Programmer("Tikita", "+78005553535", 40000)
+p._setsalary(40000)
+p.go_holli
 print(p.__dict__)
