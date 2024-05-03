@@ -99,23 +99,22 @@ class Fr(Cont):
 import random
 
 
-
 class MixingLog:
   ID = 0
   
   def __init__(self):
-    MixinLog.ID = random.randrange(99999, 1000000)
-    self.id = MixinLog.ID
-
+    MixingLog.ID = random.randrange(99999, 1000000)
+    self.id = MixingLog.ID
 
 
 class Person():
 
-  def __init__(self, name, phone, salary = None):
+  def __init__(self, name, phone, salary = None, holliday = None):
     super().__init__()
     self.name = name
     self.phone = phone
     self.salary = salary
+    self.holliday = holliday
 
   def _setsalary(self, salary):
     if isinstance(p, Manager) == True:
@@ -131,37 +130,36 @@ class Person():
   def go_holli(self):
     if isinstance(p, Manager) == True:
       self.holliday = "30 days"
+      return self.holliday
     else:
       self.holliday = "1 day"
-
+      return self.holliday
 
 
 class Manager(Person, MixingLog):
 
-  def __init__(self, name, phone, salary):
+  def __init__(self, name, phone, salary, holliday):
       print("New Manager")
       super().__init__(name, phone)
       self.salary = salary
+      self.holliday = "Hard working"
       
-
 
 class Programmer(Person, MixingLog):
   
-    def __init__(self, name, phone, salary):
+    def __init__(self, name, phone, salary, holliday):
       print("New Programmer")
       super().__init__(name, phone)
       self.salary = salary
+      self.holliday = "Hard working"
 
 
 
-
-
-
-p = Manager("Nikita", "+781252", 40000)
+p = Manager("Nikita", "+781252", 0, "holliday")
 p._setsalary(40000)
-p.go_holli
+# p.go_holli()
 print(p.__dict__)
-p = Programmer("Tikita", "+78005553535", 40000)
+p = Programmer("Tikita", "+78005553535", 0, "holliday")
 p._setsalary(40000)
-p.go_holli
+p.go_holli()
 print(p.__dict__)
