@@ -141,9 +141,8 @@ class Manager(Person, MixingLog):
       super().__init__(name, phone)
 
       
-
 class Programmer(Person, MixingLog):
-  
+
     def __init__(self, name, phone):
       print("New Programmer")
       super().__init__(name, phone)
@@ -152,7 +151,7 @@ class Programmer(Person, MixingLog):
 
 p = Manager("Nikita", "+781252")
 p._setsalary(40000)
-# p.go_holli()
+p.go_holli()
 print(p.__dict__)
 p = Programmer("Tikita", "+78005553535")
 p._setsalary(40000)
