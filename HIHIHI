@@ -109,19 +109,18 @@ class MixingLog:
 
 class Person():
 
-  def __init__(self, name, phone, salary = None, holliday = None):
+  def __init__(self, name, phone, salary = None):
     super().__init__()
     self.name = name
     self.phone = phone
     self.salary = salary
-    self.holliday = holliday
 
   def _setsalary(self, salary):
     if isinstance(p, Manager) == True:
       self.salary = salary * 1
       return self.salary
     else:
-      self.salary = salary * 1.2
+      self.salary = salary * 1.5
       return self.salary
 
   def _getsalary(self, salary):
@@ -138,28 +137,26 @@ class Person():
 
 class Manager(Person, MixingLog):
 
-  def __init__(self, name, phone, salary, holliday):
+  def __init__(self, name, phone, salary):
       print("New Manager")
       super().__init__(name, phone)
       self.salary = salary
-      self.holliday = "Hard working"
       
 
 class Programmer(Person, MixingLog):
   
-    def __init__(self, name, phone, salary, holliday):
+    def __init__(self, name, phone, salary):
       print("New Programmer")
       super().__init__(name, phone)
       self.salary = salary
-      self.holliday = "Hard working"
 
 
 
-p = Manager("Nikita", "+781252", 0, "holliday")
+p = Manager("Nikita", "+781252", 0)
 p._setsalary(40000)
 # p.go_holli()
 print(p.__dict__)
-p = Programmer("Tikita", "+78005553535", 0, "holliday")
+p = Programmer("Tikita", "+78005553535", 0)
 p._setsalary(40000)
 p.go_holli()
 print(p.__dict__)
