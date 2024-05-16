@@ -114,28 +114,13 @@ class Person:
     self.name = name
     self.phone = phone
 
-  def _setsalary(self, __salary):
-    if isinstance(p, Manager) == True:
-      k = 1
-    else:
-      k = 1.4
-    try:
-      self.salary = int(__salary) * k
-    except ValueError:
-      print("Тебе чем платить то, бананами, яблоками...?")
-      self.salary = 0
-    return self.salary
-
-  def _getsalary(self, __salary):
-    return self.salary
-
   def go_holliday(self, hollidays):
     try:
-      self.hollidays = str(int(hollidays)) + " days"
+      self.hollidays = int(hollidays)
     except ValueError:
       print("Без выходных, пока не выучит цифры")
-      self.hollidays = "Working"
-    return self.hollidays
+      self.hollidays = "Сиди, думай"
+      return self.hollidays
 
 
 class Manager(Person, MixingLog):
@@ -144,6 +129,20 @@ class Manager(Person, MixingLog):
     print("New Manager")
     super().__init__(name, phone)
 
+  def _setsalary(self, __salary):
+    try:
+      self.salary = int(__salary) * 1
+    except ValueError:
+      print("Тебе чем платить то, бананами, яблоками...?")
+      self.salary = 0
+    try:
+      p.hollidays = int(p.hollidays)
+      self.salary = self.salary - (self.salary * 0.025 * p.hollidays)
+    except ValueError:
+      return self.salary
+    except AttributeError:
+      return self.salary
+
 
 class Programmer(Person, MixingLog):
 
@@ -151,14 +150,28 @@ class Programmer(Person, MixingLog):
     print("New Programmer")
     super().__init__(name, phone)
 
+  def _setsalary(self, __salary):
+    try:
+      self.salary = int(__salary) * 1.4
+    except ValueError:
+      print("Тебе чем платить то, бананами, яблоками...?")
+      self.salary = 0
+    try:
+      p.hollidays = int(p.hollidays)
+      self.salary = self.salary - (self.salary * 0.027 * p.hollidays)
+    except ValueError:
+      return self.salary
+    except AttributeError:
+      return self.salary
+
 
 
 p = Manager("Nikita", "+7952812")
-p._setsalary("ans")
-p.go_holliday(30)
+p.go_holliday("sadw")
+p._setsalary(40000)
 print(p.__dict__)
 
 p = Programmer("Tikita", "+78005553535")
-p._setsalary(40000)
-p.go_holliday("ans")
+p.go_holliday(5)
+p._setsalary(47000)
 print(p.__dict__)
