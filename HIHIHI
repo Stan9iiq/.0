@@ -126,8 +126,8 @@ class Person:
 class Manager(Person, MixingLog):
 
   def __init__(self, name, phone):
-    print("New Manager")
     super().__init__(name, phone)
+    print(f"New Manager - {self.name}")
 
   def _setsalary(self, __salary):
     try:
@@ -136,8 +136,8 @@ class Manager(Person, MixingLog):
       print("Тебе чем платить то, бананами, яблоками...?")
       self.salary = 0
     try:
-      p.hollidays = int(p.hollidays)
-      self.salary = self.salary - (self.salary * 0.025 * p.hollidays)
+      self.hollidays = int(self.hollidays)
+      self.salary = int(self.salary - (self.salary * 0.025 * self.hollidays))
     except ValueError:
       return self.salary
     except AttributeError:
@@ -147,8 +147,8 @@ class Manager(Person, MixingLog):
 class Programmer(Person, MixingLog):
 
   def __init__(self, name, phone):
-    print("New Programmer")
     super().__init__(name, phone)
+    print(f"New Programmer - {self.name}")
 
   def _setsalary(self, __salary):
     try:
@@ -157,8 +157,8 @@ class Programmer(Person, MixingLog):
       print("Тебе чем платить то, бананами, яблоками...?")
       self.salary = 0
     try:
-      p.hollidays = int(p.hollidays)
-      self.salary = self.salary - (self.salary * 0.027 * p.hollidays)
+      self.hollidays = int(self.hollidays)
+      self.salary = int(self.salary - (self.salary * 0.027 * self.hollidays))
     except ValueError:
       return self.salary
     except AttributeError:
@@ -166,12 +166,31 @@ class Programmer(Person, MixingLog):
 
 
 
-p = Manager("Nikita", "+7952812")
-p.go_holliday("sadw")
-p._setsalary(40000)
-print(p.__dict__)
+p1 = Manager("Nikita", "+7952812")
+p1.go_holliday(5)
+# p1._setsalary(40000)
+# print(p1.__dict__)
 
-p = Programmer("Tikita", "+78005553535")
-p.go_holliday(5)
-p._setsalary(47000)
-print(p.__dict__)
+p2 = Programmer("Tikita", "+78005553535")
+p2.go_holliday("5")
+# p2._setsalary("40000")
+# print(p2.__dict__)
+
+p3 = Manager("Kikita", "+71337420")
+p3.go_holliday("abc")
+# p3._setsalary(40000)
+# print(p3.__dict__)
+
+p4 = Manager("Mikita", "+712345689")
+p4.go_holliday(5)
+# p4._setsalary("abc")
+# print(p4.__dict__)
+
+staff = [p1, p2, p3, p4]
+for p in staff:
+  p._setsalary(40000)
+
+print(p1.__dict__)
+print(p2.__dict__)
+print(p3.__dict__)
+print(p4.__dict__)
