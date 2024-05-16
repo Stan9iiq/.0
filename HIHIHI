@@ -116,31 +116,26 @@ class Person:
 
   def _setsalary(self, __salary):
     if isinstance(p, Manager) == True:
-      try:
-        self.salary = int(__salary) * 1
-      except ValueError:
-        print("Тебе чем платить то, бананами, яблоками...?")
-        self.salary = 0
-      return self.salary
+      k = 1
     else:
-      try:
-        self.salary = int(__salary) * 1.4
-      except ValueError:
-        print("Тебе чем платить то, бананами, яблоками...?")
-        self.salary = 0
-      return self.salary
+      k = 1.4
+    try:
+      self.salary = int(__salary) * k
+    except ValueError:
+      print("Тебе чем платить то, бананами, яблоками...?")
+      self.salary = 0
+    return self.salary
 
   def _getsalary(self, __salary):
     return self.salary
 
-  def go_holliday(self, days):
+  def go_holliday(self, hollidays):
     try:
-      self.days = int(days)
-      self.holliday = str(days) + " days"
+      self.hollidays = str(int(hollidays)) + " days"
     except ValueError:
       print("Без выходных, пока не выучит цифры")
-      self.holliday = "Working"
-    return self.holliday
+      self.hollidays = "Working"
+    return self.hollidays
 
 
 class Manager(Person, MixingLog):
