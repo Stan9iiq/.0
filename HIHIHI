@@ -96,6 +96,8 @@ class Fr(Cont):
 
 
 
+
+
 import random
 
 
@@ -194,3 +196,125 @@ print(p1.__dict__)
 print(p2.__dict__)
 print(p3.__dict__)
 print(p4.__dict__)
+
+
+
+
+
+
+
+
+import random
+
+
+class MixingLog:
+  ID = 0
+  
+  def __init__(self):
+    MixingLog.ID = random.randrange(99999, 1000000)
+    self.id = MixingLog.ID
+
+
+class Person:
+
+  def __init__(self, name, phone, salary):
+    super().__init__()
+    self.name = name
+    self.phone = phone
+    self.salary = salary
+
+  def go_holliday(self, hollidays):
+    try:
+      self.hollidays = int(hollidays)
+    except ValueError:
+      print("Без выходных, пока не выучит цифры")
+      self.hollidays = "Сиди, думай"
+      return self.hollidays
+
+
+class Manager(Person, MixingLog):
+
+  def __init__(self, name, phone, salary):
+    super().__init__(name, phone, salary)
+    print(f"New Manager - {self.name}")
+
+  @property
+  def salary(self):
+    return self.__salary
+
+  @salary.setter
+  def salary(self, salary):
+    try:
+      self.__salary = int(salary) * 1
+    except ValueError:
+      print("Тебе чем платить то, бананами, яблоками...?")
+      self.__salary = 0
+    try:
+      self.hollidays = int(self.hollidays)
+      self.__salary = int(self.salary - (self.salary * 0.025 * self.hollidays))
+    except ValueError:
+      return int(self.__salary)
+    except AttributeError:
+      return int(self.__salary)
+
+
+class Programmer(Person, MixingLog):
+
+  def __init__(self, name, phone, salary):
+    super().__init__(name, phone, salary)
+    print(f"New Programmer - {self.name}")
+
+  @property
+  def salary(self):
+    return self.__salary
+
+  @salary.setter
+  def salary(self, salary):
+    try:
+      self.__salary = int(int(salary) * 1.4)
+    except ValueError:
+      print("Тебе чем платить то, бананами, яблоками...?")
+      self.__salary = 0
+    try:
+      self.hollidays = int(self.hollidays)
+      self.__salary = int(self.salary - (self.salary * 0.027 * self.hollidays))
+    except ValueError:
+      return int(self.__salary)
+    except AttributeError:
+      return int(self.__salary)
+
+
+
+p1 = Manager("Nikita", "+7952812", 0)
+p1.go_holliday(6)
+# p1.salary = 40000
+# print(p1.__dict__)
+
+p2 = Programmer("Tikita", "+78005553535", 0)
+p2.go_holliday("7")
+# p2.salary = "40000"
+# print(p2.__dict__)
+
+p3 = Manager("Kikita", "+71337420", 0)
+p3.go_holliday("abc")
+# p3.salary = 40000
+# print(p3.__dict__)
+
+p4 = Programmer("Mikita", "+712345689", 0)
+p4.go_holliday(5)
+p4.salary = "abc"
+# print(p4.__dict__)
+
+p5 = Manager("Zikita", "+798654321", 0)
+# p4.salary = 40000
+# print(p4.__dict__)
+
+staff = [p1, p2, p3, p5]
+for p in staff:
+  p.salary = 40000
+
+print(p1.__dict__)
+print(p2.__dict__)
+print(p3.__dict__)
+print(p4.__dict__)
+print(p5.__dict__)
