@@ -107,53 +107,63 @@ class MixingLog:
     self.id = MixingLog.ID
 
 
-class Person():
+class Person:
 
   def __init__(self, name, phone):
     super().__init__()
     self.name = name
     self.phone = phone
 
-  def _setsalary(self, salary):
+  def _setsalary(self, __salary):
     if isinstance(p, Manager) == True:
-      self.salary = salary * 1
+      try:
+        self.salary = int(__salary) * 1
+      except ValueError:
+        print("Тебе чем платить то, бананами, яблоками...?")
+        self.salary = 0
       return self.salary
     else:
-      self.salary = salary * 1.5
+      try:
+        self.salary = int(__salary) * 1.4
+      except ValueError:
+        print("Тебе чем платить то, бананами, яблоками...?")
+        self.salary = 0
       return self.salary
 
-  def _getsalary(self, salary):
+  def _getsalary(self, __salary):
     return self.salary
 
-  def go_holli(self):
-    if isinstance(p, Manager) == True:
-      self.holliday = "30 days"
-      return self.holliday
-    else:
-      self.holliday = "1 day"
-      return self.holliday
+  def go_holliday(self, days):
+    try:
+      self.days = int(days)
+      self.holliday = str(days) + " days"
+    except ValueError:
+      print("Без выходных, пока не выучит цифры")
+      self.holliday = "Working"
+    return self.holliday
 
 
 class Manager(Person, MixingLog):
 
   def __init__(self, name, phone):
-      print("New Manager")
-      super().__init__(name, phone)
+    print("New Manager")
+    super().__init__(name, phone)
 
-      
+
 class Programmer(Person, MixingLog):
 
-    def __init__(self, name, phone):
-      print("New Programmer")
-      super().__init__(name, phone)
+  def __init__(self, name, phone):
+    print("New Programmer")
+    super().__init__(name, phone)
 
 
 
-p = Manager("Nikita", "+781252")
-p._setsalary(40000)
-p.go_holli()
+p = Manager("Nikita", "+7952812")
+p._setsalary("ans")
+p.go_holliday(30)
 print(p.__dict__)
+
 p = Programmer("Tikita", "+78005553535")
 p._setsalary(40000)
-p.go_holli()
+p.go_holliday("ans")
 print(p.__dict__)
