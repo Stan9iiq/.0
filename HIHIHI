@@ -435,3 +435,66 @@ print(p2.name, p2.phone, p1.__dict__)
 print(p3.name, p3.phone, p1.__dict__)
 print(p4.name, p4.phone, p1.__dict__)
 print(p5.name, p5.phone, p1.__dict__)
+
+
+
+
+
+class Cards:
+    
+    def __init__(self, number, fio, _balance):
+        self.number = number
+        self.fio = fio
+        self.balance = _balance
+
+    def _plusmoney(self, cash):
+        try:
+            cash = int(cash)
+            self.balance = self.balance + cash
+            print(f"Вам зачислили денюшку))) + {cash} рублей")
+            return self.balance
+        except ValueError:
+            print("Ты на карту то только деньги положить можешь")
+            self.balance = self.balance
+            return self.balance
+
+    def _minusmoney(self, cash):
+        try:
+            cash = int(cash)
+            if self.balance < cash:
+                print("Много хочешь")
+                print(f"Можно снять {self.balance} рублей")
+            else:
+                self.balance = self.balance - cash
+                print(f"Минус деньги((( - {cash} рублей")
+                return self.balance
+        except ValueError:
+            print("Деньги - это ЦИФРЫ, не буквы")
+            self.balance = self.balance
+            return self.balance
+            
+    def _skolko(self):
+        print(f"На вашем лицевом счету {self.balance} рублес")
+        
+    def sravnenie(self, other):
+        if self.balance > other.balance:
+            print("Ура, ты богаче))))")
+        else:
+            print("Нуууу, работай...")
+
+
+
+pokercard = Cards("1337228420", "Zhmushenko Valeriy Alberthovich", 1000)
+sbercard = Cards("111111111", "Aboba", 1000)
+# print(pokercard.__dict__)
+# pokercard._plusmoney(300)
+# pokercard._plusmoney("300")
+# pokercard._plusmoney("abs")
+# print(pokercard.__dict__)
+pokercard._minusmoney(1100)
+# pokercard._minusmoney("123")
+# pokercard._minusmoney("abs")
+# pokercard._minusmoney(400)
+print(pokercard.__dict__)
+pokercard._skolko()
+pokercard.sravnenie(sbercard)
